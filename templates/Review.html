@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+{% block content %}
+<center>
+    <br></br><br></br><br></br><br></br><br></br><br></br>
+    <h1>{{reviewForm}}</h1>
+
+    <form method="POST" action="/submit">
+        <fieldset class="form-group">
+                <div class="form-group">
+                    {{ form.fname.label(class="form-control-label") }}
+                    {% if form.fname.errors %}
+                        {{ form.fname(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.fname.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.fname(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <br></br>
+                <div class="form-group">
+                    {{ form.product.label(class="form-control-label") }}
+                    {% if form.product.errors %}
+                        {{ form.product(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.product.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.product(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <br></br>
+                <div class="form-group">
+                    {{ form.review.label(class="form-control-label") }}
+                    {% if form.review.errors %}
+                        {{ form.review(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.review.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.review(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <br></br>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+    </form>
+</center>
+<h2>All Reviews</h2>
+{% for data in data %}
+    <p>
+      <b>Review : </b>: {{ data }}
+    </p>
+{% endfor %}
+{% endblock content %}
+{#
+The jinja2 template engine uses the following delimiters for escaping from HTML.
+
+{% ... %} for Statements
+{{ ... }} for Expressions to print to the template output
+{# ... #} for Comments not included in the template output
+# ... ## for Line Statements
+
+The term ‘web templating system’ refers to designing an HTML script in which the variable data
+can be inserted dynamically. A web template system comprises of a template engine, some kind
+of data source and a template processor.
+
+Flask uses jinja2 template engine. A web template contains HTML syntax interspersed
+placeholders for variables and expressions (in these case Python expressions) which are
+replaced values when the template is rendered.
+#}

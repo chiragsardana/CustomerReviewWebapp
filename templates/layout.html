@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<body style="background-color:#E5E4E2;">
+<head>
+    {% if title %}
+        <title>Review - {{ title }} </title>
+    {% else %}}
+        <title>Review</title>
+    {% endif %}
+</head>
+<body>
+    {% block content %}{% endblock %}
+</body>
+</html>
